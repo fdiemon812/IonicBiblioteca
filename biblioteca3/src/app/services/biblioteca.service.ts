@@ -16,9 +16,9 @@ import { environment } from '../../environments/environment';
 
     ngOninit(){}
 
-    getBibliotecaLibros():Observable<Biblioteca>{
+    getBibliotecaLibros(titulo:string):Observable<Biblioteca>{
 
-       const params = new HttpParams().set("title", "star wars").set("limit", "10");
+       const params = new HttpParams().set("title", titulo).set("limit", "10");
 
         return   this.http.get<Biblioteca>(`${this.baseUrl}`, {params:params});
 

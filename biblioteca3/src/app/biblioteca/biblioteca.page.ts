@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { NavController } from '@ionic/angular';
 import { Libro } from '../interfaces/libro-interface';
 import { BibliotecaService } from '../services/biblioteca.service';
 
@@ -11,21 +12,28 @@ export class BibliotecaPage implements OnInit {
 
 
   libros:Array<Libro>;
+  busqueda:string; 
+  constructor(private bibliotecaService:BibliotecaService, public navControl:NavController) { }
 
-  constructor(private bibliotecaService:BibliotecaService) { }
-
-  ngOnInit() {this.obtenerLibros()}
+  ngOnInit() {}
 
 
-  obtenerLibros(){
+  obtenerLibros():void{
 
     
-     this.bibliotecaService.getBibliotecaLibros().subscribe({
+     this.bibliotecaService.getBibliotecaLibros(this.busqueda).subscribe({
        
       next: resp=>{this.libros=resp.docs},
       error:err=>{console.log(err)}
     
     });
+  }
+
+  getLibro(isbn){
+    
+
+    console.log("isbn")
+    this.navControl.push("libro");
   }
 
 }

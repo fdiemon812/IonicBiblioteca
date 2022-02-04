@@ -6,10 +6,9 @@
 
 <ion-content>
    
+  <ion-searchbar [(ngModel)]="busqueda" placeholder="Introduzca titulo" type="string" (ionInput)="obtenerLibros()" ></ion-searchbar>
 
-
-
-  <ion-item *ngFor="let libro of libros">
+  <ion-item *ngFor="let libro of libros"  button (click)="getLibro(libro.isbn[0])">
     <ion-thumbnail >
       <img src="https://covers.openlibrary.org/b/isbn/{{libro.isbn[0]}}.jpg">
     </ion-thumbnail>
@@ -20,9 +19,12 @@
       <ion-text color="medium">
         <p>Autor: {{libro.author_name}}</p>
       </ion-text>
+      ion
       <ion-text color="medium">
         <p>Año: {{libro.first_publish_year}}</p>
       </ion-text>
+        <ion-icon name="ios-information-circle-outline"></ion-icon>
+    
     </ion-label>
     <ion-icon  name="person"></ion-icon>
   </ion-item>
