@@ -24,5 +24,13 @@ import { environment } from '../../environments/environment';
 
     }
 
+    getLibro(isbn:string):Observable<any>{
+
+        const params = new HttpParams().set("isbn", isbn).set("limit", "10");
+
+        return   this.http.get<Biblioteca>(`${this.baseUrl}`, {params:params});
+
+   }
+
 
   }

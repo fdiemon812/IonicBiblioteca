@@ -24,9 +24,9 @@ const routes: Routes = [
     loadChildren: () => import('./biblioteca/biblioteca.module').then( m => m.BibliotecaPageModule)
   },
   {
-    path: 'libro',
+    path: 'libro/:isbn',
     loadChildren: () => import('./libro/libro.module').then( m => m.LibroPageModule)
-  },
+  }
 ];
 
 @NgModule({

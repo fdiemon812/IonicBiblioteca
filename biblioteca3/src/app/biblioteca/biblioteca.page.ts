@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { NavController } from '@ionic/angular';
+import { Router } from '@angular/router';
 import { Libro } from '../interfaces/libro-interface';
 import { BibliotecaService } from '../services/biblioteca.service';
 
@@ -10,10 +10,10 @@ import { BibliotecaService } from '../services/biblioteca.service';
 })
 export class BibliotecaPage implements OnInit {
 
-
+  isbn:string;
   libros:Array<Libro>;
   busqueda:string; 
-  constructor(private bibliotecaService:BibliotecaService, public navControl:NavController) { }
+  constructor(private bibliotecaService:BibliotecaService, public router:Router) { }
 
   ngOnInit() {}
 
@@ -29,11 +29,11 @@ export class BibliotecaPage implements OnInit {
     });
   }
 
-  getLibro(isbn){
+  getLibro(isb){
     
-
+    this.isbn=isb;
     console.log("isbn")
-    this.navControl.push("libro");
+    this.router.navigate(["/libro", isb]);
   }
 
 }
